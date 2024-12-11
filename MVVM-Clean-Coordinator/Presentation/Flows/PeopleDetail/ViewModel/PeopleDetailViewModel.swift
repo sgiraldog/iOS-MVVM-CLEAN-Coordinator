@@ -8,10 +8,11 @@
 import Foundation
 import Combine
 
-protocol PeopleDetailViewModelProtocol {
+protocol PeopleDetailViewModelProtocol: ObservableObject {
     var id: String { get }
     var viewState: PeopleDetailViewState { get }
     var fetchPeopleListUseCase: FetchPeopleUseCaseProtocol { get }
+    func handleAction(_ action: PeopleDetailViewAction)
 }
 
 enum PeopleDetailViewState {
@@ -24,7 +25,7 @@ enum PeopleDetailViewAction {
     case onRetryTap
 }
 
-final class PeopleDetailViewModel: PeopleDetailViewModelProtocol, ObservableObject {
+final class PeopleDetailViewModel: PeopleDetailViewModelProtocol {
     
     let id: String
     let fetchPeopleListUseCase: FetchPeopleUseCaseProtocol

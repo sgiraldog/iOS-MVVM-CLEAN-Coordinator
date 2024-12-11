@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct PeopleView: View {
+struct PeopleView<ViewModel: PeopleViewModel>: View {
     
-    @ObservedObject var viewModel: PeopleViewModel
+    @ObservedObject var viewModel: ViewModel
     
     var body: some View {
         switch viewModel.viewState {
