@@ -11,26 +11,18 @@ class MainCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
 
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
+    init() {
+        navigationController = UINavigationController()
     }
 
     func start() {
-        let networkClient = NetworkClient()
-        let service = PeopleService(networkClient: networkClient)
-        let repository = PeopleRepository(peopleService: service)
-        let useCase = FetchPeopleUseCase(peopleRepository: repository)
-        let viewModel = PeopleViewModel(coordinator: self, fetchPeopleListUseCase: useCase)
+        let viewModel = PeopleViewModel()
         let vc = UIHostingController(rootView: PeopleView(viewModel: viewModel))
         navigationController.pushViewController(vc, animated: false)
     }
     
     func goToPeopleDetail(id: String) {
-        let networkClient = NetworkClient()
-        let service = PeopleService(networkClient: networkClient)
-        let repository = PeopleRepository(peopleService: service)
-        let useCase = FetchPeopleUseCase(peopleRepository: repository)
-        let viewModel = PeopleDetailViewModel(id: id, fetchPeopleListUseCase: useCase)
+        let viewModel = PeopleDetailViewModel(id: id)
         let vc = UIHostingController(rootView: PeopleDetailView(viewModel: viewModel))
         navigationController.pushViewController(vc, animated: false)
     }

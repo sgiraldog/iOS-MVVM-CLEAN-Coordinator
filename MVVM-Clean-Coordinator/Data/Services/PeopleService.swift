@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Resolver
 
 protocol PeopleServiceProtocol {
     func fetchPeopleList() async -> Result<FetchPeopleListResponse, APIError>
@@ -13,12 +14,10 @@ protocol PeopleServiceProtocol {
 }
 
 class PeopleService: PeopleServiceProtocol {
-    let networkClient: NetworkClientProtocol
+    @Injected private var networkClient: NetworkClientProtocol
     let apiPath = Constants.API.peoplePath
     
-    init(networkClient: NetworkClientProtocol) {
-        self.networkClient = networkClient
-    }
+    init() {}
     
     func fetchPeopleList() async -> Result<FetchPeopleListResponse, APIError> {
         let endpoint = Endpoint(

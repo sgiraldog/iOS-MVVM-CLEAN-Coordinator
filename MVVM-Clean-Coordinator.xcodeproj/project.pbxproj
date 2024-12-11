@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A1A26E992D091E5900D48E82 /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = A1A26E982D091E5900D48E82 /* Resolver */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		A16D0F712D07DC8800BEEA42 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -65,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1A26E992D091E5900D48E82 /* Resolver in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +130,7 @@
 			);
 			name = "MVVM-Clean-Coordinator";
 			packageProductDependencies = (
+				A1A26E982D091E5900D48E82 /* Resolver */,
 			);
 			productName = "MVVM-Clean-Coordinator";
 			productReference = A16D0F5A2D07DC8700BEEA42 /* MVVM-Clean-Coordinator.app */;
@@ -208,6 +214,9 @@
 			);
 			mainGroup = A16D0F512D07DC8700BEEA42;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				A1A26E972D091E5900D48E82 /* XCRemoteSwiftPackageReference "Resolver" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A16D0F5B2D07DC8700BEEA42 /* Products */;
 			projectDirPath = "";
@@ -561,6 +570,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A1A26E972D091E5900D48E82 /* XCRemoteSwiftPackageReference "Resolver" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hmlongco/Resolver";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A1A26E982D091E5900D48E82 /* Resolver */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A1A26E972D091E5900D48E82 /* XCRemoteSwiftPackageReference "Resolver" */;
+			productName = Resolver;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A16D0F522D07DC8700BEEA42 /* Project object */;
 }

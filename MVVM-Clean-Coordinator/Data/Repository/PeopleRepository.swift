@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Resolver
 
 protocol PeopleRepositoryProtocol {
     func fetchPeopleList() async -> Result<FetchPeopleListResponse, APIError>
@@ -13,11 +14,9 @@ protocol PeopleRepositoryProtocol {
 }
 
 final class PeopleRepository: PeopleRepositoryProtocol {
-    let peopleService: PeopleServiceProtocol
+    @Injected private var peopleService: PeopleServiceProtocol
     
-    init(peopleService: PeopleServiceProtocol) {
-        self.peopleService = peopleService
-    }
+    init() {}
     
     func fetchPeopleList() async -> Result<FetchPeopleListResponse, APIError> {
         return await peopleService.fetchPeopleList()

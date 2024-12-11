@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import Resolver
 
 protocol PeopleViewModelProtocol: ObservableObject {
     var coordinator: MainCoordinator { get }
@@ -28,14 +29,11 @@ enum PeopleViewAction {
 
 final class PeopleViewModel: PeopleViewModelProtocol {
     
-    let coordinator: MainCoordinator
-    let fetchPeopleListUseCase: FetchPeopleUseCaseProtocol
+    @Injected var coordinator: MainCoordinator
+    @Injected var fetchPeopleListUseCase: FetchPeopleUseCaseProtocol
     @Published var viewState: PeopleViewState = .loading
     
-    init(coordinator: MainCoordinator, fetchPeopleListUseCase: FetchPeopleUseCaseProtocol) {
-        self.coordinator = coordinator
-        self.fetchPeopleListUseCase = fetchPeopleListUseCase
-        
+    init() {
         fetchPeopleList()
     }
     

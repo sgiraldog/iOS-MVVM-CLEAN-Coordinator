@@ -6,11 +6,12 @@
 //
 
 import UIKit
+import Resolver
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    var coordinator: MainCoordinator?
+    @LazyInjected var coordinator: MainCoordinator
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -18,19 +19,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
-        
-        let navController = UINavigationController()
-
-        // send that into our coordinator so that it can display view controllers
-        coordinator = MainCoordinator(navigationController: navController)
 
         // tell the coordinator to take over control
-        coordinator?.start()
+        coordinator.start()
 
         // create a basic UIWindow and activate it
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = navController
+        window?.rootViewController = coordinator.navigationController
         window?.makeKeyAndVisible()
     }
 

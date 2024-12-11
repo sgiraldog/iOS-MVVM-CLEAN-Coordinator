@@ -4,7 +4,9 @@
 //
 //  Created by Sebastian on 10/12/24.
 //
+
 import Foundation
+import Resolver
 
 protocol FetchPeopleUseCaseProtocol {
     func fetchPeopleList() async -> Result<FetchPeopleListResponse, APIError>
@@ -12,11 +14,9 @@ protocol FetchPeopleUseCaseProtocol {
 }
 
 class FetchPeopleUseCase: FetchPeopleUseCaseProtocol {
-    let peopleRepository: PeopleRepositoryProtocol
+    @Injected private var peopleRepository: PeopleRepositoryProtocol
     
-    init(peopleRepository: PeopleRepositoryProtocol) {
-        self.peopleRepository = peopleRepository
-    }
+    init() {}
     
     func fetchPeopleList() async -> Result<FetchPeopleListResponse, APIError> {
         return await peopleRepository.fetchPeopleList()
